@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raspberry Pi Camera Stream</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .video-container {
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Raspberry Pi Camera Stream</h1>
+    <div class="video-container">
+        <!-- サーバーサイドの /video_feed から返されるストリーム映像を表示 -->
+        <img src="{{ url_for('video_feed') }}" alt="Camera Stream" />
+    </div>
+</body>
+</html>
