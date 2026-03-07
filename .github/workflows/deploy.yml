@@ -14,9 +14,12 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-
+        
       - name: Deploy with Docker Compose
         run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
+          docker-compose --version
           docker-compose down
           docker-compose up --build -d
           
