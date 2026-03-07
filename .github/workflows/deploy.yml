@@ -1,0 +1,21 @@
+name: Deploy to Raspberry Pi
+
+on:
+  push: # コードがプッシュされたときに実行
+    branches:
+      - main
+  workflow_dispatch: # GitHubの画面から手動実行も可能にする設定
+
+jobs:
+  deploy:
+    runs-on: self-hosted # ラズパイ上のセルフホストランナーで実行する指定
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy with Docker Compose
+        run: |
+          docker compose down
+          docker compose build
+          docker compose up -d
